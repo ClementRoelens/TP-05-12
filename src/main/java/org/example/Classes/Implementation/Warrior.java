@@ -6,4 +6,6 @@ public class Warrior extends Characters {
     protected Warrior(Builder builder) {
         super(builder);
     }
+
+
 }
