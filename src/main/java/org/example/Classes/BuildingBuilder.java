@@ -8,23 +8,23 @@ public  abstract class BuildingBuilder {
     private boolean hasRoof;
 
 
-    public BuildingStyle getStyle() {
+    protected BuildingStyle getStyle() {
         return style;
     }
 
-    public int getSize() {
+    protected int getSize() {
         return size;
     }
 
-    public int getTrainingTime() {
+    protected int getTrainingTime() {
         return trainingTime;
     }
 
-    public int getBuildingTime() {
+    protected int getBuildingTime() {
         return buildingTime;
     }
 
-    public boolean isHasRoof() {
+    protected boolean isHasRoof() {
         return hasRoof;
     }
 
