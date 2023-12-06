@@ -10,9 +10,20 @@ public class MagicAcademy extends Building {
         this.name = "École de magie";
     }
 
+    public void misspell(int spellcastersNumber){
+        if (spellcastersNumber > 5){
+            this.structuralDamages -= 10;
+            System.out.println("Trop de mages ensemble, un incident est arrivé.\nL'école de magie prend 10 points de dommages structurels");
+        }
+    }
+
     @Override
     public Spellcaster.Builder createCharacters() {
-        return new Spellcaster.Builder();
+        if (!this.isDestroyed){
+            return new Spellcaster.Builder();
+        }
+        System.out.println("L'école de magie a été détruite. Vous ne pouvez plus créer de mage");
+        return null;
     }
 
     public static class Builder extends BuildingBuilder{

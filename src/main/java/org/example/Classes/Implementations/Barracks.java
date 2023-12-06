@@ -8,9 +8,17 @@ public class Barracks extends Building {
         this.name = "Caserne";
     }
 
+    public boolean hasBrawlHappened(int warriorsNumber){
+        return warriorsNumber >= 3;
+    }
+
     @Override
     public Warrior.Builder createCharacters() {
-        return new Warrior.Builder();
+        if (!this.isDestroyed){
+            return new Warrior.Builder();
+        }
+        System.out.println("La caserne a été détruite, vous ne pouvez plus créer de guerrier");
+        return null;
     }
 
     public static class Builder extends BuildingBuilder {

@@ -1,6 +1,6 @@
 package org.example.Classes;
 
-public  abstract class BuildingBuilder {
+public abstract class BuildingBuilder {
     private BuildingStyle style;
     private int size;
     private int trainingTime;

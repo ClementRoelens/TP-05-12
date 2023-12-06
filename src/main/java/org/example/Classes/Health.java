@@ -13,4 +13,12 @@ public class Health {
                 "healthAmount=" + healthAmount +
                 '}';
     }
+
+    public int getHealthAmount() {
+        return healthAmount;
+    }
+
+    public void setHealthAmount(int healthAmount) {
+        this.healthAmount = healthAmount;
+    }
 }

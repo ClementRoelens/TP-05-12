@@ -1,26 +1,67 @@
 package org.example.Classes;
 
 
-public class Characters {
-
+public abstract class Characters {
+    private int id;
+    private static int count;
+    protected String name;
+    protected int atkValue;
     Health health;
     Mana mana;
     Armament armament;
     PhysicalSkill physicalSkill;
     MagicalSkill magicalSkill;
     Race race;
+    protected boolean isAlive;
 
 
     protected Characters(Builder builder) {
+        this.id = count++;
         this.health = builder.health;
         this.mana = builder.mana;
         this.armament = builder.armament;
         this.physicalSkill = builder.physicalSkill;
         this.magicalSkill = builder.magicalSkill;
         this.race = builder.race;
+        this.isAlive = true;
     }
 
-    public static class Builder {
+    @Override
+    public String toString() {
+        return "Characters{" +
+                "health=" + health +
+                ", mana=" + mana +
+                ", armament=" + armament +
+                ", physicalSkill=" + physicalSkill +
+                ", magicalSkill=" + magicalSkill +
+                ", race=" + race +
+                '}';
+    }
+
+    public void takeDamages(int amount) {
+        if (amount > 0) {
+            if (this.isAlive) {
+                this.health.setHealthAmount(this.health.getHealthAmount() - amount);
+                System.out.printf("%s %d prend %d points de dégâts\n", this.name, this.id, amount);
+                if (this.health.getHealthAmount() <= 0) {
+                    System.out.printf("%s %d est mort\n", this.name, this.id);
+                    this.isAlive = false;
+                }
+            } else {
+                System.out.printf("%s %d est déjà mort !\n", this.name, this.id);
+            }
+        }
+    }
+
+    public int makeDamages() {
+        if (this.isAlive) {
+            return this.atkValue;
+        }
+        System.out.println("Un personnage mort ne peut pas attaquer !");
+        return 0;
+    }
+
+    public abstract static class Builder {
         private Health health;
         private Mana mana;
         private Armament armament;
@@ -58,21 +99,8 @@ public class Characters {
             return this;
         }
 
-        public Characters build() {
-            // Vous devriez appeler le constructeur privé de Characters ici
-            return new Characters(this);
-        }
+        public abstract Characters build();
     }
 
-    @Override
-    public String toString() {
-        return "Characters{" +
-                "health=" + health +
-                ", mana=" + mana +
-                ", armament=" + armament +
-                ", physicalSkill=" + physicalSkill +
-                ", magicalSkill=" + magicalSkill +
-                ", race=" + race +
-                '}';
-    }
+
 }

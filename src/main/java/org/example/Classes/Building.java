@@ -4,12 +4,14 @@ public abstract class Building {
     private final int id;
     private static int count;
     protected String name;
-    private BuildingStyle style;
-    private int size;
-    private int trainingTime;
-    private int buildingTime;
-    private int structuralDamages;
-    private boolean hasRoof;
+    protected BuildingStyle style;
+    protected int size;
+    protected int trainingTime;
+    protected int buildingTime;
+    protected int structuralDamages;
+    protected boolean hasRoof;
+    protected boolean isDestroyed;
+
 
 
     protected Building(BuildingBuilder builder) {
@@ -21,6 +23,8 @@ public abstract class Building {
         this.structuralDamages = 0;
         this.hasRoof = builder.isHasRoof();
     }
+
+
 
     private int getId() {
         return id;
@@ -58,7 +62,27 @@ public abstract class Building {
         return hasRoof;
     }
 
+
+
+
     public abstract Characters.Builder createCharacters();
+
+    public final void takeDamages(int amount){
+        if (!this.isDestroyed){
+            if (amount > 0){
+                this.structuralDamages += amount;
+                System.out.printf("%s prend %d points de dommages structurels\n", this.name, amount);
+                if (this.structuralDamages > 100){
+                    this.isDestroyed = true;
+                    System.out.printf("%s est détruit\n", this.name);
+                }
+            } else {
+                System.out.println("Les dommages ne peuvent pas être négatifs");
+            }
+        } else {
+            System.out.printf("%s est déjà détruit\n");
+        }
+    }
 
     @Override
     public String toString() {
