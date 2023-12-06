@@ -1,7 +1,7 @@
 package org.example.Classes;
 
 
-public class Characters {
+public abstract class Characters {
 
     Health health;
     Mana mana;
@@ -20,7 +20,7 @@ public class Characters {
         this.race = builder.race;
     }
 
-    public static class Builder {
+    public abstract static class Builder {
         private Health health;
         private Mana mana;
         private Armament armament;
@@ -58,11 +58,10 @@ public class Characters {
             return this;
         }
 
-        public Characters build() {
+        public abstract Characters build() ;
             // Vous devriez appeler le constructeur privé de Characters ici
-            return new Characters(this);
         }
-    }
+
 
     @Override
     public String toString() {
