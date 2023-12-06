@@ -5,7 +5,7 @@ import org.example.Classes.*;
 public class Barracks extends Building {
     private Barracks(BuildingBuilder builder) {
         super(builder);
-        this.name = "Caserne";
+        this.name = "Caserne de pompier";
     }
 
     @Override

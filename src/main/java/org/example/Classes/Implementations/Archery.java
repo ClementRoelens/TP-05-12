@@ -7,7 +7,7 @@ import org.example.Classes.Characters;
 public class Archery extends Building {
     private Archery(BuildingBuilder builder){
         super(builder);
-        this.name = "Archerie";
+        this.name = "Fôret de Sherwood";
     }
     @Override
     public Archer.Builder createCharacters() {

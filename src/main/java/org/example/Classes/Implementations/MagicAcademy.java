@@ -7,7 +7,7 @@ import org.example.Classes.Characters;
 public class MagicAcademy extends Building {
     private MagicAcademy(BuildingBuilder builder){
         super(builder);
-        this.name = "École de magie";
+        this.name = "École de magie Poitiers";
     }
 
     @Override
