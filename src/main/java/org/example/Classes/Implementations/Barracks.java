@@ -16,5 +16,6 @@ public class Barracks extends Building {
             return new Barracks(this);
         }
 
+
     }
 }

@@ -58,6 +58,7 @@ public abstract class Building {
         return hasRoof;
     }
 
+    public abstract Characters createCharacters();
 
     @Override
     public String toString() {
